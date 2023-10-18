@@ -39,6 +39,8 @@ dependencies:
   hive_flutter: ^1.1.0
   uuid: ^4.1.0
   animated_text_kit: ^4.2.2
+  image_picker: ^1.0.4
+  image_cropper: ^5.0.0
 
 
 dev_dependencies:
