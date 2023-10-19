@@ -11,13 +11,13 @@ class ContatoModel extends HiveObject {
   final _id = const Uuid().v4();
 
   @HiveField(1)
-  final String name;
+  String name;
 
   @HiveField(2)
-  final String number;
+  String number;
 
   @HiveField(3)
-  final String imgPath;
+  String imgPath;
 
   String get id => _id;
 }

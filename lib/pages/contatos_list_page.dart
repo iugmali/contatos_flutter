@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:contatos_flutter/pages/contato_form_page.dart';
 import 'package:flutter/material.dart';
 
 import '../repositories/contato_repository.dart';
@@ -82,16 +85,28 @@ class _ContatosListPageState extends State<ContatosListPage> {
                 child: Card(
                   elevation: 5,
                   child: ListTile(
-                    leading: CircleAvatar(),
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 25.0,
+                      child: CircleAvatar(
+                        radius: 24.0,
+                        backgroundColor: Colors.grey,
+                        child: ClipOval(
+                          child: (contato.imgPath.isNotEmpty)
+                              ? Image.file(File(contato.imgPath))
+                              : Icon(Icons.person, color: Colors.white,),
+                        ),
+                      ),
+                    ),
                     title: Text(contato.name),
                     subtitle: Text(contato.number),
-                    onTap: () {},
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ContatoFormPage(contato: contato,))),
                   ),
                 )
             );
           }
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ContatoFormPage())), child: const Icon(Icons.add),),
     ));
   }
 }
