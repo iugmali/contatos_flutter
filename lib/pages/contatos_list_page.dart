@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:contatos_flutter/pages/contato_form_page.dart';
 import 'package:flutter/material.dart';
 
-import '../repositories/contato_repository.dart';
-import '../models/contato_model.dart';
+import 'package:contatos_flutter/pages/contato_form_page.dart';
+import 'package:contatos_flutter/repositories/contato_repository.dart';
+import 'package:contatos_flutter/models/contato_model.dart';
 
 class ContatosListPage extends StatefulWidget {
   const ContatosListPage({super.key});
