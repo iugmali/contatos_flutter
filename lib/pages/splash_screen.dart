@@ -11,41 +11,57 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  openHome() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) => const ContatosListPage()));
-    });
+  void Function() openHome = () {};
+
+
+  @override
+  initState() {
+    super.initState();
+    openHome = () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ContatosListPage()));
+    };
   }
 
   @override
   Widget build(BuildContext context) {
-    openHome();
+
+    const gradientColors = [
+      Colors.green,
+      Color.fromARGB(255, 200, 200, 200),
+      Colors.white,
+    ];
+    const colorizeColors = [
+      Color.fromARGB(200, 255, 255, 255),
+      Color.fromARGB(200, 230, 255, 230),
+      Color.fromARGB(200, 10, 150, 10),
+      Color.fromARGB(200, 100, 255, 0),
+    ];
+    var animatedText = AnimatedTextKit(
+      animatedTexts: [
+        ColorizeAnimatedText('Lista de Contatos', textAlign: TextAlign.center, textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 50),colors: colorizeColors),
+      ],
+      totalRepeatCount: 5,
+      isRepeatingAnimation: false,
+      onTap: () {
+      },
+      onFinished: openHome,
+    );
+
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.green,
-                Colors.white,
-              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: gradientColors,
               stops: [
-                0.6,
+                0.3,
                 0.8,
+                0.95,
               ])),
         child: Center(
-          child: DefaultTextStyle(
-            style: const TextStyle(
-              fontSize: 40.0,
-            ),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                WavyAnimatedText('Lista de contatos!', speed: const Duration(milliseconds: 50)),
-              ],
-              isRepeatingAnimation: true,
-              onTap: () {
-              },
-            ),
+          child: SizedBox(
+            width: 250.0,
+            child: animatedText
           ),
         ),
     );
