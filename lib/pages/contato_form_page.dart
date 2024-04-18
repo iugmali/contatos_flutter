@@ -90,7 +90,7 @@ class _ContatoFormPageState extends State<ContatoFormPage> {
                   builder: (_) {
                     return Wrap(
                       children: [
-                        ListTile(
+                        if (Platform.isAndroid || Platform.isIOS) ListTile(
                           leading: Icon(Icons.camera_alt),
                           title: Text("Camera"),
                           onTap: () async {
@@ -150,7 +150,7 @@ class _ContatoFormPageState extends State<ContatoFormPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           TextField(
@@ -158,7 +158,7 @@ class _ContatoFormPageState extends State<ContatoFormPage> {
                 border: OutlineInputBorder(), labelText: 'Nome'),
             controller: _nameController,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           TextField(
@@ -172,7 +172,7 @@ class _ContatoFormPageState extends State<ContatoFormPage> {
               TelefoneInputFormatter(),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           ElevatedButton(
@@ -222,11 +222,11 @@ class _ContatoFormPageState extends State<ContatoFormPage> {
                 }
               },
               child: (widget.contato != null)
-                  ? Text(
+                  ? const Text(
                       "Atualizar Contato",
                       style: TextStyle(fontSize: 20),
                     )
-                  : Text(
+                  : const Text(
                       "Criar Contato",
                       style: TextStyle(fontSize: 20),
                     ))
